@@ -4,11 +4,12 @@
 ## the problem 
 
 To solve the problem was using an artificial neural network, more precisely a recursion model.
+
 * Initially, the problem was analyzed.
 * Data processing and analysis.
 * The choice of the AI model.
 * The analysis of the best of the parameters
-* performance analysis
+* Performance analysis
 
 
 **APIs, libraries and framework**
