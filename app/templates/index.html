@@ -3,102 +3,143 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>AI Imóveis</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Imóveis — Previsão de Aluguel</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 
 <body>
 
-<div class="container">
+    <div class="bg-glow"></div>
 
-    <div class="hero">
-        <h1>🏠 AI Imóveis</h1>
-        <p>Previsão de valor de aluguel com Inteligência Artificial</p>
-    </div>
+    <main class="container">
 
-    <div class="card">
+        <header class="hero">
+            <span class="badge"><i class="fa-solid fa-wand-magic-sparkles"></i> Previsão com Machine Learning</span>
+            <h1>AI Imóveis</h1>
+            <p>Estime o valor de aluguel do seu apartamento em segundos, com o poder da Inteligência Artificial.</p>
+        </header>
 
-        <form action="{{ url_for('gfg') }}" method="post">
+        <div class="layout">
 
-            <div class="grid">
-
-                <div class="input-group">
-                    <label>Área (m²)</label>
-                    <input name="n_aream" type="text" required>
+            <section class="card">
+                <div class="card-head">
+                    <div class="card-icon"><i class="fa-solid fa-building"></i></div>
+                    <div>
+                        <h2>Dados do imóvel</h2>
+                        <p>Preencha as características abaixo</p>
+                    </div>
                 </div>
 
-                <div class="input-group">
-                    <label>Quartos</label>
-                    <input name="n_rooms" type="text" required>
+                <form action="{{ url_for('gfg') }}" method="post">
+
+                    <div class="grid">
+
+                        <div class="input-group">
+                            <label><i class="fa-solid fa-ruler-combined"></i> Área (m²)</label>
+                            <input name="n_aream" type="number" step="any" placeholder="Ex: 70" required>
+                        </div>
+
+                        <div class="input-group">
+                            <label><i class="fa-solid fa-bed"></i> Quartos</label>
+                            <input name="n_rooms" type="number" step="any" placeholder="Ex: 2" required>
+                        </div>
+
+                        <div class="input-group">
+                            <label><i class="fa-solid fa-bath"></i> Banheiros</label>
+                            <input name="n_bathroom" type="number" step="any" placeholder="Ex: 1" required>
+                        </div>
+
+                        <div class="input-group">
+                            <label><i class="fa-solid fa-car"></i> Vagas</label>
+                            <input name="n_parking" type="number" step="any" placeholder="Ex: 1" required>
+                        </div>
+
+                        <div class="input-group">
+                            <label><i class="fa-solid fa-stairs"></i> Andar</label>
+                            <input name="n_floor" type="number" step="any" placeholder="Ex: 5" required>
+                        </div>
+
+                        <div class="input-group">
+                            <label><i class="fa-solid fa-paw"></i> Animal</label>
+                            <select name="n_selectAnimal">
+                                <option value="1">Aceita</option>
+                                <option value="0">Não aceita</option>
+                            </select>
+                        </div>
+
+                        <div class="input-group">
+                            <label><i class="fa-solid fa-couch"></i> Mobiliado</label>
+                            <select name="n_forniture">
+                                <option value="1">Sim</option>
+                                <option value="0">Não</option>
+                            </select>
+                        </div>
+
+                        <div class="input-group">
+                            <label><i class="fa-solid fa-building-shield"></i> Condomínio (R$)</label>
+                            <input name="n_hoa" type="number" step="any" placeholder="Ex: 500" required>
+                        </div>
+
+                        <div class="input-group">
+                            <label><i class="fa-solid fa-file-invoice-dollar"></i> IPTU (R$)</label>
+                            <input name="n_popetytax" type="number" step="any" placeholder="Ex: 100" required>
+                        </div>
+
+                        <div class="input-group">
+                            <label><i class="fa-solid fa-fire-extinguisher"></i> Seguro (R$)</label>
+                            <input name="n_fireinsurance" type="number" step="any" placeholder="Ex: 30" required>
+                        </div>
+
+                    </div>
+
+                    <button type="submit">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i> Prever valor
+                    </button>
+
+                </form>
+            </section>
+
+            <aside class="result-panel">
+                <div class="result-inner">
+                    <p class="result-label">Valor estimado de aluguel</p>
+
+                    {% if prediction %}
+                        <p class="result-value"><span class="currency">R$</span> {{ prediction }}</p>
+                        <p class="result-hint"><i class="fa-solid fa-circle-check"></i> Previsão gerada pela IA</p>
+                    {% else %}
+                        <p class="result-value empty"><span class="currency">R$</span> --</p>
+                        <p class="result-hint">Preencha o formulário e clique em prever</p>
+                    {% endif %}
                 </div>
 
-                <div class="input-group">
-                    <label>Banheiros</label>
-                    <input name="n_bathroom" type="text" required>
-                </div>
+                <ul class="features">
+                    <li><i class="fa-solid fa-bolt"></i> Resultado instantâneo</li>
+                    <li><i class="fa-solid fa-brain"></i> Modelo treinado com dados reais</li>
+                    <li><i class="fa-solid fa-lock"></i> Seus dados não são armazenados</li>
+                </ul>
+            </aside>
 
-                <div class="input-group">
-                    <label>Vagas</label>
-                    <input name="n_parking" type="text" required>
-                </div>
-
-                <div class="input-group">
-                    <label>Animal</label>
-                    <select name="n_selectAnimal">
-                        <option value="1">Aceita</option>
-                        <option value="0">Não aceita</option>
-                    </select>
-                </div>
-
-                <div class="input-group">
-                    <label>Mobiliado</label>
-                    <select name="n_forniture">
-                        <option value="1">Sim</option>
-                        <option value="0">Não</option>
-                    </select>
-                </div>
-
-                <div class="input-group">
-                    <label>Condomínio</label>
-                    <input name="n_hoa" type="text" required>
-                </div>
-
-                <div class="input-group">
-                    <label>IPTU</label>
-                    <input name="n_popetytax" type="text" required>
-                </div>
-
-                <div class="input-group">
-                    <label>Seguro</label>
-                    <input name="n_fireinsurance" type="text" required>
-                </div>
-
-                <div class="input-group">
-                    <label>Andar</label>
-                    <input name="n_floor" type="text" required>
-                </div>
-
-            </div>
-
-            <button type="submit">🔮 Prever valor</button>
-
-        </form>
-
-       
-        <div class="result">
-            <h2>Resultado</h2>
-
-            {% if prediction %}
-                <p>R$ {{ prediction }}</p>
-            {% else %}
-                <p>R$ --</p>
-            {% endif %}
         </div>
 
-    </div>
+        <footer class="footer">
+            <p><strong>Machine Learning</strong> — A inteligência artificial é uma ótima ferramenta para resolver os mais diversos problemas.</p>
+            <div class="socials">
+                <a href="#" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="#" aria-label="Stack Overflow"><i class="fa-brands fa-stack-overflow"></i></a>
+                <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            </div>
+            <p class="copyright">© 2022 Auto-IA · Design by KRONUS</p>
+        </footer>
 
-</div>
+    </main>
 
 </body>
 </html>
