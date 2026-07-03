@@ -1,0 +1,23 @@
+
+# Ambiente virtual
+.venv/
+venv/
+ENV/
+
+# Ignorar pastas de dependências
+node_modules/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignorar arquivos de configuração local e senhas
+.env
+.env.local
+
+# Ignorar arquivos do sistema operacional
+.DS_Store
+Thumbs.db
+
+# Ignorar logs do sistema
+*.log

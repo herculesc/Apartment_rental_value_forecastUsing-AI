@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>AI Imóveis</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="hero">
+        <h1>🏠 AI Imóveis</h1>
+        <p>Previsão de valor de aluguel com Inteligência Artificial</p>
+    </div>
+
+    <div class="card">
+
+        <form action="{{ url_for('gfg') }}" method="post">
+
+            <div class="grid">
+
+                <div class="input-group">
+                    <label>Área (m²)</label>
+                    <input name="n_aream" type="text" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Quartos</label>
+                    <input name="n_rooms" type="text" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Banheiros</label>
+                    <input name="n_bathroom" type="text" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Vagas</label>
+                    <input name="n_parking" type="text" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Animal</label>
+                    <select name="n_selectAnimal">
+                        <option value="1">Aceita</option>
+                        <option value="0">Não aceita</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label>Mobiliado</label>
+                    <select name="n_forniture">
+                        <option value="1">Sim</option>
+                        <option value="0">Não</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label>Condomínio</label>
+                    <input name="n_hoa" type="text" required>
+                </div>
+
+                <div class="input-group">
+                    <label>IPTU</label>
+                    <input name="n_popetytax" type="text" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Seguro</label>
+                    <input name="n_fireinsurance" type="text" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Andar</label>
+                    <input name="n_floor" type="text" required>
+                </div>
+
+            </div>
+
+            <button type="submit">🔮 Prever valor</button>
+
+        </form>
+
+       
+        <div class="result">
+            <h2>Resultado</h2>
+
+            {% if prediction %}
+                <p>R$ {{ prediction }}</p>
+            {% else %}
+                <p>R$ --</p>
+            {% endif %}
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

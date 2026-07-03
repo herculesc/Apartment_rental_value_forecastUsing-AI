@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Prediction the Imovel Price</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+
+    {% block conteudo %}
+
+    <form action="{{ url_for('gfg') }}" method="post">
+
+        <div class="title-page">
+            <h1>Prediction the Imovel Price</h1>
+        </div>
+
+        <div class="img-building">
+            <img src="{{ url_for('static', filename='img_building2.png') }}" alt="Building image">
+        </div>
+
+        <div class="form-IA">
+            <h2>AI test!</h2>
+
+            <p class="val-predition">
+                <label>Prediction R$:</label>
+            </p>
+        </div>
+
+    </form>
+
+    <footer>
+        <div class="footer-content">
+            <h3>Machine Learning</h3>
+            <p>Artificial intelligence is a great tool to solve the most diverse problems!</p>
+
+            <ul class="socials">
+                <li><a href="#"><i class="fa fa-github"></i></a></li>
+                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                <li><a href="#"><i class="fa fa-stack-overflow"></i></a></li>
+                <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+            </ul>
+        </div>
+
+        <div class="footer-bottom">
+            <p>Copyright &copy;2022 Auto-IA. Design By KRONUS</p>
+        </div>
+    </footer>
+
+    {% endblock %}
+
+</body>
+</html>
